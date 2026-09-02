@@ -1,0 +1,1 @@
+import "./globals.css"; export const metadata={title:"Tripple 7 V3",description:"Tripple 7 premium movie platform"}; export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en"><body>{children}</body></html>}

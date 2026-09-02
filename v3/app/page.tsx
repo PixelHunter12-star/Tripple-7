@@ -1,0 +1,6 @@
+import Link from "next/link";
+export default function Home(){return <main className="shell"><nav className="nav"><b>777</b><span>Tripple 7</span><div><Link href="/trailers">Trailers</Link> <Link href="/login">Member Access</Link> <Link href="/admin">Admin</Link></div></nav>
+<section className="hero"><div><p className="eyebrow">TRIPPLE 7 • V3</p><h1>Entertainment. <em>One passcode away.</em></h1><p className="lead">Upcoming movies, series and premium member access without email/password login.</p><div className="actions"><Link className="btn primary" href="/register">Start 5-Day Trial</Link><Link className="btn ghost" href="/login">Enter Passcode</Link></div></div>
+<div className="panel"><b>UGX 1,000</b><small>1 day</small><hr/><b>UGX 5,000</b><small>7 days</small><hr/><b>UGX 20,000</b><small>30 days</small></div></section>
+<section><p className="eyebrow">MEMBERSHIP</p><h2>5-day free trial</h2><p className="lead">After the trial: 1 day UGX 1,000 • 1 week UGX 5,000 • 1 month UGX 20,000.</p></section>
+<footer>© 2026 Tripple 7</footer></main>}

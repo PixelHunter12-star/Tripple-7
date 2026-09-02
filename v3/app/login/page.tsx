@@ -1,0 +1,1 @@
+import {login} from "./server"; export default function Login(){return <main className="center"><form action={login} className="cardform"><p className="eyebrow">MEMBER ACCESS</p><h1>Enter passcode</h1><p className="muted">No email or password required.</p><input name="passcode" maxLength={8} required/><button className="btn primary">Access account</button></form></main>}

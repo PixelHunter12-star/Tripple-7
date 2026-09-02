@@ -1,0 +1,44 @@
+generator client { provider = "prisma-client-js" }
+datasource db { provider = "postgresql" url = env("DATABASE_URL") }
+enum Role { USER ADMIN }
+enum PlanCode { DAY WEEK MONTH TRIAL }
+enum SubscriptionStatus { ACTIVE EXPIRED PENDING CANCELLED }
+model User {
+  id String @id @default(cuid())
+  displayName String
+  phone String @unique
+  passcodeHash String
+  role Role @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  subscriptions Subscription[]
+  sessions PasscodeSession[]
+}
+model Plan {
+  id String @id @default(cuid())
+  code PlanCode @unique
+  name String
+  priceUgx Int
+  durationDays Int
+  active Boolean @default(true)
+  subscriptions Subscription[]
+}
+model Subscription {
+  id String @id @default(cuid())
+  userId String
+  planId String
+  status SubscriptionStatus @default(PENDING)
+  startsAt DateTime
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+  plan Plan @relation(fields:[planId],references:[id])
+}
+model PasscodeSession {
+  id String @id @default(cuid())
+  userId String
+  tokenHash String @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+}
